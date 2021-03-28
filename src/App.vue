@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <transition
-      :enter-active-class="[
-        'animate__animated',
-        { animate__fadeInRight: transitionClassEnter },
-        { animate__fadeInLeft: !transitionClassEnter }
+      :appear="false"
+      mode="out-in"
+      :class="[
+        'animate__animated animate__faster',
+        { animate__slideInRight: transitionClassEnter },
+        { animate__slideInLeft: !transitionClassEnter }
       ]"
     >
       <component :is="currentSection" @selectedSection="changeSection" />
@@ -36,8 +38,13 @@ export default defineComponent({
     this.$store.dispatch("fetchAllFaq");
   },
   methods: {
-    changeSection() {
-      this.transitionClassEnter = false;
+    changeSection(to = "next") {
+      if (to === "back") {
+        this.transitionClassEnter = false;
+        this.currentSection = this.$currentSection;
+        return;
+      }
+      this.transitionClassEnter = true;
       this.currentSection = this.$currentSection;
     }
   },

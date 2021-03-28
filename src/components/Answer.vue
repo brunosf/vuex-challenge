@@ -32,7 +32,7 @@ export default defineComponent({
   methods: {
     comeBackSetion() {
       this.$store.dispatch("comeBackSetion");
-      this.$emit("selectedSection");
+      this.$emit("selectedSection", "back");
     }
   }
 });

@@ -1,6 +1,14 @@
 <template>
   <div class="container">
-    <component :is="currentSection" @selectedSection="changeSection" />
+    <transition
+      :enter-active-class="[
+        'animate__animated',
+        { animate__fadeInRight: transitionClassEnter },
+        { animate__fadeInLeft: !transitionClassEnter }
+      ]"
+    >
+      <component :is="currentSection" @selectedSection="changeSection" />
+    </transition>
   </div>
 </template>
 
@@ -20,7 +28,8 @@ export default defineComponent({
   },
   data() {
     return {
-      currentSection: "Categories"
+      currentSection: "Categories",
+      transitionClassEnter: true
     };
   },
   created() {
@@ -28,6 +37,7 @@ export default defineComponent({
   },
   methods: {
     changeSection() {
+      this.transitionClassEnter = false;
       this.currentSection = this.$currentSection;
     }
   },

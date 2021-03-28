@@ -51,6 +51,7 @@ export default defineComponent({
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.2s;
 
     &:hover {
       background: #26282c;

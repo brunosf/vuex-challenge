@@ -8,7 +8,7 @@ export default createStore({
     categories: [],
     questions: [],
     answers: [],
-    currentSection: "Categories",
+    currentSection: "Categories"
   },
   mutations: {
     SET_CATEGORIES(state, payload) {
@@ -22,7 +22,7 @@ export default createStore({
     },
     CHANGE_SECTION(state, payload) {
       state.currentSection = payload;
-    },
+    }
   },
   actions: {
     fetchAllFaq(context) {
@@ -44,7 +44,7 @@ export default createStore({
       }
 
       context.commit("CHANGE_SECTION", "Categories");
-    },
+    }
   },
   getters: {
     $categories(state) {
@@ -58,6 +58,6 @@ export default createStore({
     },
     $currentSection(state) {
       return state.currentSection;
-    },
-  },
+    }
+  }
 });

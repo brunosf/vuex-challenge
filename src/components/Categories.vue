@@ -65,6 +65,7 @@ export default defineComponent({
     grid-gap: 20px;
     padding: 10px 30px;
     cursor: pointer;
+    transition: all 0.2s;
 
     &:hover {
       background-color: #5d6681;
